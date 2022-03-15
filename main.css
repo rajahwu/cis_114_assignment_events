@@ -13,8 +13,18 @@ body {
 .game-card {
     color: white;
     margin-top: 15%;
+    margin-bottom: 15%;
     background-color: #0030FF;
 }
+
+@media screen and (max-width: 850px) {
+    .game-card {
+        margin: 25%;
+        z-index: 5;
+}
+}
+
+
 
 .card-title {
     background-color: #630DFF;
