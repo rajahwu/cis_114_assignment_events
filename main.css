@@ -1,6 +1,13 @@
 body {
-    color: #0C6EE8;
     background-image: url('img/theory_trainer_bg.png');
+}
+
+.main-game {
+
+}
+
+.header {
+    color: white;
 }
 
 .game-card {

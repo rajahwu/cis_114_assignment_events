@@ -1,20 +1,8 @@
 'use strict';
 
-const answerBtn = document.querySelector('#submit_answer');
 let userAnswers = document.querySelectorAll('input.user-answer');
-
-
-
-answerBtn.addEventListener('click', () => {
-    let userChoice;
-    for (const userAnswer of userAnswers)
-        if (userAnswer.checked) {
-            userChoice = userAnswer.value
-            console.log(userChoice);
-            break;
-        }
-})
-
+const answerBtn = document.querySelector('#submit_answer');
+const questionDisplay = document.querySelector('#question');
 
 let questions = [ 
     {
@@ -78,3 +66,15 @@ let questions = [
 },
 
 ]
+
+
+
+answerBtn.addEventListener('click', () => {
+    let userChoice;
+    for (const userAnswer of userAnswers)
+        if (userAnswer.checked) {
+            userChoice = userAnswer.value
+            console.log(userChoice);
+            break;
+        }
+})
