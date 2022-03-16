@@ -1,111 +1,130 @@
 "use strict";
 
-let userAnswers = document.querySelectorAll("input.user-answer");
+const userAnswers = document.querySelectorAll("input.user-answer");
 const answerBtn = document.querySelector("#submit_answer");
 
 const categoryDisplay = document.querySelector("#category_display");
-const questionNumber = document.querySelector("#question_number");
+const questionNumberDisplay = document.querySelector("#question_number");
 const questionDisplay = document.querySelector("#question_text");
 const answersDisplay = document.querySelectorAll("#answers label");
 
-let questions = [
-  {
-    question_text:
-      "A Web ______ is a program that interprets and displays Web pages and enables you to view and interact with a Web page.",
-    
-    category: "General",
+// let questions = [
+//   {
+//     question_text:
+//       "A Web ______ is a program that interprets and displays Web pages and enables you to view and interact with a Web page.",
 
-    answers: [
-      { answer: "client", correct: false },
+//     category: "General",
 
-      { answer: "surfer", correct: false },
+//     answers: [
+//       { answer: "client", correct: false },
 
-      { answer: "browser", correct: true },
+//       { answer: "surfer", correct: false },
 
-      { answer: "resource locator", correct: false }
-    ]
-  },
+//       { answer: "browser", correct: true },
 
-  {
-    question_text:
-      "The ___ tag is used to dislay a horizontal rule acroos the page.",
+//       { answer: "resource locator", correct: false },
+//     ],
+//   },
 
-    category: "HTML",
+//   {
+//     question_text:
+//       "The ___ tag is used to dislay a horizontal rule acroos the page.",
 
-    answers: [
-      { answer: "<arcoss>",  correct: false },
+//     category: "HTML",
 
-      { answer: "<rule>", correct: false },
+//     answers: [
+//       { answer: "<arcoss>", correct: false },
 
-      { answer: "<hr />", correct: true },
+//       { answer: "<rule>", correct: false },
 
-      { answer: "<line>", correct: false }
-    ]
-  },
+//       { answer: "<hr />", correct: true },
 
-  {
-    question_text: "The most recent version of HTML is HTML____.",
+//       { answer: "<line>", correct: false },
+//     ],
+//   },
 
-    category: "JavaScript",
+//   {
+//     question_text: "The most recent version of HTML is HTML____.",
 
-    answers: [
-      { answer: "4.01", correct: false },
+//     category: "JavaScript",
 
-      { answer: "3.2", correct: false },
+//     answers: [
+//       { answer: "4.01", correct: false },
 
-      { answer: "2.0", correct: false },
+//       { answer: "3.2", correct: false },
 
-      { answer: "5", correct: true }
-    ]
+//       { answer: "2.0", correct: false },
+
+//       { answer: "5", correct: true },
+//     ],
+//   },
+// ];
+
+let testQuestons = [];
+class Question {
+  constructor(question_text, category, answers) {
+    this.question_text = question_text;
+    this.category = category;
+    this.answers = answers;
   }
-];
+  showCategorty() {
+    categoryDisplay.textContent = `${this.category}`;
+  }
+  showQueston() {
+    questionDisplay.textContent = `${this.question_text}`;
+  }
+  showAnswers() {
+    for (let i = 0; i <= this.answers.length; i++) {
+      answersDisplay[i].textContent = this.answers[i].answer;
+    }
+  }
+  addQuestion(){
+        testQuestons.push(this);
+  }
+
+}
+
+let question1 = new Question("This is the first qustion", "Test", [
+  { answer: "first solution", correct: false },
+  { answer: "second solution", correct: false },
+  { answer: "third solution", correct: true },
+  { answer: "fourth solution", correct: false },
+]);
+
+let question2 = new Question(
+  "A Web ______ is a program that interprets and displays Web pages and enables you to view and interact with a Web page.",
+  "JavaScript",
+  [
+    { answer: "client", correct: false },
+    { answer: "surfer", correct: false },
+    { answer: "browser", correct: true },
+    { answer: "resource locator", correct: false },
+  ]
+);
 
 
+question1.addQuestion();
+question2.addQuestion();
+console.log(testQuestons);
+console.log(typeof testQuestons);
+console.log(testQuestons[0]);
+console.log(testQuestons[1])
 
-categoryDisplay.textContent = `${questions[0].category}`;
-questionDisplay.textContent = `${questions[0].question_text}`;
+// console.log(question1);
+question1.showCategorty();
+question1.showQueston();
+question1.showAnswers();
 
 getUserChoice();
 
-// render answers to DOM
-
-// return each answer of questions[0]
-questions[0].answers.forEach((answer) => {
-    answersDisplay.forEach((label) => {
-        label.textContent = answer.answer
-    })
-   console.log(answer.answer)
-});
-
-// return label for each answer label
-
-// answersDisplay.forEach((label) => {
-//     let answerOptions = [];
-//     answerOptions.push(label.textContent)
-//     return answerOptions
-// });
-
-
-
-console.log(`\n ================== \n`);
-
-for (const answerText of answersDisplay){
-    console.log(answerText.textContent)
-for (let i=0; i <= 4; i++) {
-    console.log(questions[0].answers)
-    answerText.textContent = `${questions[0]['answer']}}`
-}
-}
-
-
 function getUserChoice() {
-answerBtn.addEventListener("click", () => {
-  let userChoice;
-  for (const userAnswer of userAnswers)
-    if (userAnswer.checked) {
-      userChoice = userAnswer.value;
-      console.log(userChoice);
-      break;
-    }
-});
+  answerBtn.addEventListener("click", () => {
+    let userChoice;
+    for (const userAnswer of userAnswers)
+      if (userAnswer.checked) {
+        userChoice = userAnswer.value;
+        console.log(userChoice);
+        break;
+      }
+  });
 }
